@@ -1,2 +1,1 @@
-# VIM_profile
-My .vimrc file
+# My linux setup profile

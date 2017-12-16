@@ -1,28 +1,23 @@
 set nocompatible              " required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ervandew/supertab'
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"去掉vi的一致性"
-set nocompatible
 "显示行号"
 set number
 " 隐藏滚动条"    
@@ -58,6 +53,8 @@ set noexpandtab        "不允许扩展table"
 set whichwrap+=<,>,h,l
 set autoread
 set cursorline        "突出显示当前行"
+
+
 " set cursorcolumn        "突出显示当前列"
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -90,10 +87,10 @@ inoremap <expr> <CR>       pumvisible() ? '<C-y>' : '<CR>'
 ""离开插入模式后自动关闭预览窗口"
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 ""上下左右键行为"
-inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
-inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
-inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
-inoremap <expr> <PageUp>   pumvisible() ? '\<PageUp>\<C-p>\<C-n>' : '\<PageUp>'
+inoremap <expr> <Down>     pumvisible() ? '<C-n>' : '<Down>'
+inoremap <expr> <Up>       pumvisible() ? '<C-p>' : '<Up>'
+inoremap <expr> <PageDown> pumvisible() ? '<PageDown><C-p><C-n>' : '<PageDown>'
+inoremap <expr> <PageUp>   pumvisible() ? '<PageUp><C-p><C-n>' : '<PageUp>'
 ""
 "F2开启和关闭树"
 map <F2> :NERDTreeToggle<CR>
@@ -103,3 +100,7 @@ let NERDTreeShowBookmarks=1
 "设置忽略文件类型"
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 let NERDTreeWinSize=20
+
+set ts=4
+set expandtab
+let g:NERDCustomDelimiters = {'py':{'left':'#'}}
