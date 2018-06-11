@@ -76,7 +76,7 @@ export TERM="xterm-256color"
 
 tmux_init()
 {
-    session=msra
+    session=hao
     tmux new-session -s "$session" -d -n "local"
     tmux split-window -h
     tmux split-window -v
